@@ -9,7 +9,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
-import org.junit.Assert;
+import org.testng.Assert;
 import utilities.Encoder;
 
 import java.io.UnsupportedEncodingException;
