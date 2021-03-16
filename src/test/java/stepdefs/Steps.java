@@ -1,5 +1,6 @@
 package stepdefs;
 
+import com.avito.AvitoElement;
 import com.avito.Categories;
 import com.avito.Elements;
 import com.avito.MoneyFilter;
@@ -39,7 +40,6 @@ public class Steps {
 
     @After
     public void closeDriver() {
-        ScreenShotMaker.addAttach();
         Driver.closeDriver();
     }
 
@@ -53,13 +53,13 @@ public class Steps {
     @Пусть("в выпадающием списке категорий выбрана {categories}")
     public void selectCategory(Categories category) {
         element.selectCategory(category);
-        ScreenShotMaker.addAttach();
+        ScreenShotMaker.addAttachWebElementWithBlur(AvitoElement.AVITO_HEADER.by);
     }
 
     @Пусть("^в поле поиска введено значение (.*)$")
     public void printInSearchTextField(String string) {
         element.printInSearchTextField(string);
-        ScreenShotMaker.addAttach();
+        ScreenShotMaker.addAttachWebElement(AvitoElement.AVITO_HEADER.by);
     }
 
     @Тогда("кликнуть по выпадающему списку региона")
@@ -71,7 +71,7 @@ public class Steps {
     @Тогда("^в поле региона введено значение (.*)$")
     public void printInLocationTextField(String string) {
         element.printInLocationTextField(string);
-        ScreenShotMaker.addAttach();
+        ScreenShotMaker.addAttachWebElement(AvitoElement.LOCATION_POPUP_LOCATION.by);
     }
 
     @Тогда("нажата кнопка показать объявления")
@@ -89,18 +89,18 @@ public class Steps {
     @Тогда("активирован чекбокс только с фотографией")
     public void clickCheckBoxWithPhoto() {
         element.clickCheckBoxWithPhoto();
-        ScreenShotMaker.addAttach();
+        ScreenShotMaker.addAttachWebElementWithBlur(AvitoElement.CHECKBOX_WITH_PHOTO.by);
     }
 
     @Тогда("в выпадающем списке сортировки выбрано {moneyFilter}")
     public void selectMoneyFilter(MoneyFilter moneyFilter) {
         element.selectMoneyFilter(moneyFilter);
-        ScreenShotMaker.addAttach();
+        ScreenShotMaker.addAttachWebElementWithBlur(AvitoElement.MONEY_FILTER.by);
     }
 
     @Тогда("^в консоль выведено название и цена (\\d+) первых товаров$")
     public void printNameANdPrice(Integer int1) {
         element.printNameANdPrice(int1);
-        ScreenShotMaker.addAttach();
+        ScreenShotMaker.addAttachFullScreen();
     }
 }
