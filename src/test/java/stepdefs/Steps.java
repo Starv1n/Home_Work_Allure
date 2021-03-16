@@ -9,10 +9,12 @@ import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
+
 import org.testng.Assert;
 import utilities.Encoder;
+import utilities.ScreenShotMaker;
 
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 public class Steps {
@@ -32,11 +34,12 @@ public class Steps {
     @Before
     public void initDriver() {
         Driver.getDriver().manage().window().maximize();
-        Driver.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After
     public void closeDriver() {
+        ScreenShotMaker.addAttach();
         Driver.closeDriver();
     }
 
@@ -44,50 +47,60 @@ public class Steps {
     public void openSite() {
         Driver.getDriver().get("https://www.avito.ru/");
         element = new Elements();
+        ScreenShotMaker.addAttach();
     }
 
     @Пусть("в выпадающием списке категорий выбрана {categories}")
     public void selectCategory(Categories category) {
         element.selectCategory(category);
+        ScreenShotMaker.addAttach();
     }
 
     @Пусть("^в поле поиска введено значение (.*)$")
     public void printInSearchTextField(String string) {
         element.printInSearchTextField(string);
+        ScreenShotMaker.addAttach();
     }
 
     @Тогда("кликнуть по выпадающему списку региона")
     public void clickChooseRegion() {
         element.clickChooseRegion();
+        ScreenShotMaker.addAttach();
     }
 
     @Тогда("^в поле региона введено значение (.*)$")
     public void printInLocationTextField(String string) {
         element.printInLocationTextField(string);
+        ScreenShotMaker.addAttach();
     }
 
     @Тогда("нажата кнопка показать объявления")
     public void clickShowResultsButton() {
         element.clickShowResultsButton();
+        ScreenShotMaker.addAttach();
     }
 
     @Тогда("^открыласть страница результатов по запросу (.*)$")
     public void checkIfNeededSiteOpened(String string) throws UnsupportedEncodingException {
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(Encoder.encodeValue(string)));
+        ScreenShotMaker.addAttach();
     }
 
     @Тогда("активирован чекбокс только с фотографией")
     public void clickCheckBoxWithPhoto() {
         element.clickCheckBoxWithPhoto();
+        ScreenShotMaker.addAttach();
     }
 
     @Тогда("в выпадающем списке сортировки выбрано {moneyFilter}")
     public void selectMoneyFilter(MoneyFilter moneyFilter) {
         element.selectMoneyFilter(moneyFilter);
+        ScreenShotMaker.addAttach();
     }
 
     @Тогда("^в консоль выведено название и цена (\\d+) первых товаров$")
     public void printNameANdPrice(Integer int1) {
         element.printNameANdPrice(int1);
+        ScreenShotMaker.addAttach();
     }
 }
