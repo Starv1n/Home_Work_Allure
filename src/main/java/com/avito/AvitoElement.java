@@ -8,7 +8,7 @@ public enum AvitoElement {
     CHOOSE_REGION(By.cssSelector(".main-location-3j9by")),
     LOCATION_POPUP_LOCATION(By.xpath("//div[contains(@class,'popup-content')]")),
     LOCATION_TEXT_FIELD(By.className("suggest-input-3p8yi")),
-    AVITO_HEADER(By.xpath("//div[contains(@class,'index-header')]/div[contains(@class,'index-root')]")),
+    AVITO_HEADER(By.xpath("//div[contains(@class,'index-header')]//div[contains(@class,'index-root')]")),
     FIRST_LOCATION_OPTION(By.xpath("//div[contains(@class,'popup-container')]//li[contains(@class,'suggest-suggest')]")),
     SHOW_RESULTS_BUTTON(By.xpath("//div[contains(@class,'popup-container')]//button[contains(@class,'button')]")),
     CHECKBOX_WITH_DELIVERY(By.xpath("//div[contains(@data-marker,'delivery')]//label[contains(@class,'checkbox')]")),
